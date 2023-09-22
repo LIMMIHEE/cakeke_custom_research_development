@@ -61,77 +61,79 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: LindiStickerWidget(
-              controller: controller,
-              child: SizedBox(
-                  width: double.infinity,
-                  height: double.infinity,
-                  child: Image.asset(
-                    background,
-                    fit: BoxFit.fitWidth,
-                  )),
+      body: MobileDesignWidget(
+        child: Column(
+          children: [
+            Expanded(
+              child: LindiStickerWidget(
+                controller: controller,
+                child: SizedBox(
+                    width: double.infinity,
+                    height: double.infinity,
+                    child: Image.asset(
+                      background,
+                      fit: BoxFit.fitWidth,
+                    )),
+              ),
             ),
-          ),
-          DefaultTabController(
-            length: 3,
-            child: Column(
-              children: [
-                const TabBar(
-                  tabs: [
-                    TabItem(title: '배경'),
-                    TabItem(title: '스티커'),
-                    TabItem(title: '문자'),
-                  ],
-                ),
-                SizedBox(
-                  height: 200,
-                  child: TabBarView(children: [
-                    TabViewListView(
-                        addAssetList: backgroundImages,
+            DefaultTabController(
+              length: 3,
+              child: Column(
+                children: [
+                  const TabBar(
+                    tabs: [
+                      TabItem(title: '배경'),
+                      TabItem(title: '스티커'),
+                      TabItem(title: '문자'),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 200,
+                    child: TabBarView(children: [
+                      TabViewListView(
+                          addAssetList: backgroundImages,
+                          onTap: (asset) {
+                            setState(() {
+                              background = asset;
+                            });
+                          }),
+                      TabViewListView(
+                        addAssetList: stickerImages,
                         onTap: (asset) {
-                          setState(() {
-                            background = asset;
-                          });
-                        }),
-                    TabViewListView(
-                      addAssetList: stickerImages,
-                      onTap: (asset) {
-                        if (mounted) {
-                          controller.addWidget(
-                            Image.asset(asset),
-                          );
-                        }
-                      },
-                    ),
-                    Container(
-                        decoration: BoxDecoration(
-                            color: const Color(0xFFF5F5F5),
-                            borderRadius: BorderRadius.circular(8)),
-                        margin: const EdgeInsets.all(12),
-                        child: TextField(
-                          decoration: const InputDecoration(
-                            hintText: '문자를 입력해주세요.',
-                            contentPadding: EdgeInsets.symmetric(
-                                vertical: 14, horizontal: 18),
-                            border: InputBorder.none,
-                          ),
-                          onSubmitted: (text) {
-                            if (text.isNotEmpty && mounted) {
-                              controller.addWidget(
-                                Text(text),
-                              );
-                            }
-                          },
-                        )),
-                  ]),
-                )
-              ],
+                          if (mounted) {
+                            controller.addWidget(
+                              Image.asset(asset),
+                            );
+                          }
+                        },
+                      ),
+                      Container(
+                          decoration: BoxDecoration(
+                              color: const Color(0xFFF5F5F5),
+                              borderRadius: BorderRadius.circular(8)),
+                          margin: const EdgeInsets.all(12),
+                          child: TextField(
+                            decoration: const InputDecoration(
+                              hintText: '문자를 입력해주세요.',
+                              contentPadding: EdgeInsets.symmetric(
+                                  vertical: 14, horizontal: 18),
+                              border: InputBorder.none,
+                            ),
+                            onSubmitted: (text) {
+                              if (text.isNotEmpty && mounted) {
+                                controller.addWidget(
+                                  Text(text),
+                                );
+                              }
+                            },
+                          )),
+                    ]),
+                  )
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
