@@ -1,16 +1,7 @@
-# cakeke_custom_research_development
+# 케이크에크 커스텀 기능 R&D
 
-케이크에크 커스텀 기능 R&D
 
-## Getting Started
+케이크에크 커스텀 기능 R&D 레파지토리 입니다.
 
-This project is a starting point for a Flutter application.
+#### [👉 테스트 진행 가능한 웹으로 이동](https://flutter-connect-6e42e.web.app)
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
